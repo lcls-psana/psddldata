@@ -728,31 +728,34 @@
   [[config_type]]
   [[pack(4)]]
 {
-  uint32_t _version -> version;
-  uint32_t _runTrigDelay -> runTrigDelay;
-  uint32_t _daqTrigDelay -> daqTrigDelay;
-  uint32_t _dacSetting -> dacSetting;
+  uint32_t _version          -> version;
+  uint32_t _usePgpEvr        -> usePgpEvr;
+  uint32_t _evrRunCode       -> evrRunCode;
+  uint32_t _evrDaqCode       -> evrDaqCode;
+  uint32_t _evrRunTrigDelay  -> evrRunTrigDelay;
+  uint32_t _epixRunTrigDelay -> epixRunTrigDelay;
+  uint32_t _dacSetting       -> dacSetting;
   uint32_t _asicPins {
-    uint8_t _asicGR:1 -> asicGR;
-    uint8_t _asicAcq:1 -> asicAcq;
-    uint8_t _asicR0:1 -> asicR0;
+    uint8_t _asicGR:1    -> asicGR;
+    uint8_t _asicAcq:1   -> asicAcq;
+    uint8_t _asicR0:1    -> asicR0;
     uint8_t _asicPpmat:1 -> asicPpmat;
-    uint8_t _asicPpbe:1 -> asicPpbe;
+    uint8_t _asicPpbe:1  -> asicPpbe;
     uint8_t _asicRoClk:1 -> asicRoClk;
     uint32_t _z:26;
   }
   uint32_t _asicControls {
-    uint8_t _asicGRControl:1 -> asicGRControl;
-    uint8_t _asicAcqControl:1 -> asicAcqControl;
-    uint8_t _asicR0Control:1 -> asicR0Control;
-    uint8_t _asicPpmatControl:1 -> asicPpmatControl;
-    uint8_t _asicPpbeControl:1 -> asicPpbeControl;
-    uint8_t _asicR0ClkControl:1 -> asicR0ClkControl;
-    uint8_t _prepulseR0En:1 -> prepulseR0En;
-    uint32_t _adcStreamMode:1 -> adcStreamMode;
+    uint8_t _asicGRControl:1     -> asicGRControl;
+    uint8_t _asicAcqControl:1    -> asicAcqControl;
+    uint8_t _asicR0Control:1     -> asicR0Control;
+    uint8_t _asicPpmatControl:1  -> asicPpmatControl;
+    uint8_t _asicPpbeControl:1   -> asicPpbeControl;
+    uint8_t _asicR0ClkControl:1  -> asicR0ClkControl;
+    uint8_t _prepulseR0En:1      -> prepulseR0En;
+    uint32_t _adcStreamMode:1    -> adcStreamMode;
     uint8_t _testPatternEnable:1 -> testPatternEnable;
-    uint8_t _SyncMode:2 -> SyncMode;
-    uint8_t _R0Mode:1 -> R0Mode;
+    uint8_t _SyncMode:2          -> SyncMode;
+    uint8_t _R0Mode:1            -> R0Mode;
     uint8_t _z1:20;
   }
   uint32_t _acqToAsicR0Delay -> acqToAsicR0Delay;
@@ -765,6 +768,10 @@
   uint32_t _adcClkHalfT -> adcClkHalfT;
   uint32_t _asicR0Width -> asicR0Width;
   uint32_t _adcPipelineDelay -> adcPipelineDelay;
+  uint32_t _adcPipelineDelay0 -> adcPipelineDelay0;
+  uint32_t _adcPipelineDelay1 -> adcPipelineDelay1;
+  uint32_t _adcPipelineDelay2 -> adcPipelineDelay2;
+  uint32_t _adcPipelineDelay3 -> adcPipelineDelay3;
   uint32_t _Sync {  // new
     uint16_t _SyncWidth:16 -> SyncWidth;
     uint16_t _SyncDelay:16 -> SyncDelay;
@@ -1166,6 +1173,37 @@
   uint16_t _frame[@config.numberOfReadableRows()][@config.numberOfColumns()] -> frame;
   uint16_t _calibrationRows[@config.numberOfCalibrationRows()][@config.numberOfColumns()] -> calibrationRows;
   uint16_t _environmentalRows[@config.numberOfEnvironmentalRows()][@config.numberOfColumns()] -> environmentalRows;
+  uint16_t _temperatures[@config.numberOfAsics()] -> temperatures;
+  uint32_t _lastWord -> lastWord;
+}
+
+//------------------ ElementV3 ------------------
+@type ElementV3
+  [[type_id(Id_EpixElement, 3)]]
+  [[pack(2)]]
+  [[config(Config100aV1)]]
+  [[config(Config100aV2)]]
+  [[config(ConfigSV1)]]
+{
+  uint32_t _first {
+    uint8_t _vc:2 -> vc;
+    uint8_t _z:4;
+    uint8_t _lane:2 -> lane;
+    uint32_t _tid:24;
+  }
+  uint32_t _second {
+    uint16_t _acqCount:16 -> acqCount;
+    uint16_t _z:16;
+  }
+  uint32_t _frameNumber -> frameNumber;
+  uint32_t _ticks -> ticks;
+  uint32_t _fiducials -> fiducials;
+  uint32_t _z0;
+  uint32_t _z1;
+  uint32_t _z2;
+  uint16_t _frame[@config.numberOfReadableRows()][@config.numberOfColumns()] -> frame;
+  uint16_t _calibrationRows[@config.numberOfCalibrationRows()][@config.numberOfColumns()] -> calibrationRows;
+  uint32_t _environmentalRows[@config.numberOfEnvironmentalRows()][@config.numberOfColumns()>>1] -> environmentalRows;
   uint16_t _temperatures[@config.numberOfAsics()] -> temperatures;
   uint32_t _lastWord -> lastWord;
 }
