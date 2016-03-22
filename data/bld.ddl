@@ -627,4 +627,25 @@
   double _channelVoltages[@self._numChannels] -> channelVoltages;
 }
 
+//------------------ BldDataBeamMonitor ------------------
+/* Intensity and Position Measurements */
+@type BldDataBeamMonitor
+  [[type_id(Id_BeamMonitorBldData, 0)]]
+  [[value_type]]
+  [[pack(4)]]
+{
+  double _TotalIntensity -> TotalIntensity; /* Value of Total Intensity, in J. */
+  double _X_Position -> X_Position; /* Value of X Position, in m. */
+  double _Y_Position -> Y_Position; /* Value of Y Position, in m. */
+  double _peakA -> peakA; /* Peak Amplitude of Channel */
+  double _peakT -> peakT; /* Location of Peak Amplitude of Channel */
+  double _Channel_Intensity[16] -> Channel_Intensity; /* Value of Channel Intensity, in J. */
+
+  /* Constructor which takes values for every attribute */
+  @init()  [[auto, inline]];
+
+
+
+}
+
 } //- @package Bld
