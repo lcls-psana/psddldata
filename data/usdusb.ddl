@@ -1,6 +1,42 @@
 @package UsdUsb  {
 
 
+//----------------- FexConfigV1 -----------------
+/* Class for creating a FexData for an encoder - takes an offset and scale. */
+@type FexConfigV1
+  [[type_id(Id_UsdUsbFexConfig, 1)]]
+  [[config_type]]
+{
+  @const uint16_t NCHANNELS = 4;
+  @const uint16_t NAME_CHAR_MAX = 48;
+
+  /* Offset (in counts) to apply to raw encoder counts */
+  int32_t _offset[NCHANNELS]  -> offset;
+  /* Scale factor for converting encoder counts to units */
+  double  _scale[NCHANNELS]   -> scale;
+  /* Descriptive name for each channel */
+  char    _name[NCHANNELS][NAME_CHAR_MAX] -> name;
+
+  /* Constructor with values for each attribute */
+  @init()  [[auto, inline]];
+}
+
+
+//------------------ FexDataV1 ------------------
+/* Class for holding the encoder value after application of an offset and scale. */
+@type FexDataV1
+  [[type_id(Id_UsdUsbFexData, 1)]]
+{
+  @const uint32_t Encoder_Inputs = 4;
+
+  /* Corrected encoder value = (raw_count + offset) * scale */
+  double _encoder_value[Encoder_Inputs] -> _encoder_values;
+
+  /* Constructor with values for each attribute */
+  @init()  [[auto, inline]];
+}
+
+
 //------------------ ConfigV1 ------------------
 @type ConfigV1
   [[type_id(Id_UsdUsbConfig, 1)]]

@@ -11,6 +11,10 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-00-38
+2016-03-23 Daniel Damiani
+- usdusb.ddl: added FexConfigV1 and FexDataV1 for usdusb encoder
+
 Tag V01-00-37
 2016-03-22 Trista Tookey
 - generic1d.ddl: added ConfigV0 and DataV0 for beammonitor

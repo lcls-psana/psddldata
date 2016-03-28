@@ -633,6 +633,7 @@
   [[type_id(Id_BeamMonitorBldData, 0)]]
   [[value_type]]
   [[pack(4)]]
+  [[devel]]
 {
   double _TotalIntensity -> TotalIntensity; /* Value of Total Intensity, in J. */
   double _X_Position -> X_Position; /* Value of X Position, in m. */
