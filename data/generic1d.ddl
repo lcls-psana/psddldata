@@ -85,6 +85,9 @@
     if (@config.SampleType()[channel] != ConfigV0::FLOAT64) return ndarray<const double, 1>();
     return make_ndarray((const double*)(_int_data().data()+@config.data_offset(channel)), @config.Length()[channel]);
   @}
+
+  /* Constructor with values for each attribute */
+  @init()  [[auto, inline]];
 }
 
 }
