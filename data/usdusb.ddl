@@ -30,7 +30,7 @@
   @const uint32_t Encoder_Inputs = 4;
 
   /* Corrected encoder value = (raw_count + offset) * scale */
-  double _encoder_value[Encoder_Inputs] -> _encoder_values;
+  double _encoder_value[Encoder_Inputs] -> encoder_values;
 
   /* Constructor with values for each attribute */
   @init()  [[auto, inline]];
