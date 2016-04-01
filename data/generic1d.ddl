@@ -49,12 +49,11 @@
 
 @type DataV0
   [[type_id(Id_Generic1DData, 0)]]
-  [[value_type]]
   [[pack(4)]]
   [[config(ConfigV0)]]
 {
-  uint32_t _size_of -> size_of ;
-  uint8_t  _data[@self._size_of] -> _int_data;
+  uint32_t _data_size -> data_size ;
+  uint8_t  _data[@self._data_size] -> _int_data;
 
   uint8_t[]  data_u8 (uint32_t channel)
   [[language("C++")]] @{
@@ -88,6 +87,7 @@
 
   /* Constructor with values for each attribute */
   @init()  [[auto, inline]];
+
 }
 
 }

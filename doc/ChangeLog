@@ -11,6 +11,11 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-00-40
+2016-04-01 David Schneider
+- generic1d.ddl: remove value_type from DataV0 (psana seg faulted)
+  change name of _size_of to _data_size since DDL generates _sizeof
+	
 Tag V01-00-39
 2016-03-29 Daniel Damiani
 - usdusb.ddl:     _encoder_values changed to encoder_values
