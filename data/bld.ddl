@@ -29,8 +29,8 @@
 //------------------ BldDataFEEGasDetEnergyV1 ------------------
 /* Six energy measurements from Front End Enclosure Gas Detector.
    PV names: GDET:FEE1:241:ENRC, GDET:FEE1:242:ENRC, 
-	GDET:FEE1:361:ENRC, GDET:FEE1:362:ENRC, 
-	GDET:FEE1:363:ENRC, and GDET:FEE1:364:ENRC 
+    GDET:FEE1:361:ENRC, GDET:FEE1:362:ENRC, 
+    GDET:FEE1:363:ENRC, and GDET:FEE1:364:ENRC 
    Each pair of methods (e.g. f_11_ENRC(), f_12_ENRC() contains
    identical measurements using two different phototubes.  "11" and "12"
    are before the gas attenuation.  "21" and "22" are after gas
@@ -407,6 +407,27 @@
 }
 
 
+//------------------ BldDataEOrbitsV0 ------------------
+/* Orbit parameters. */
+@type BldDataEOrbitsV0
+  [[type_id(Id_EOrbits, 0)]]
+  [[value_type]]
+  [[pack(4)]]
+{
+    /* Constructor which takes values for every attribute */
+    @init()  [[auto, inline]];
+
+    /* Construct from dimensions only.  Allow data to be appended externally. */
+    @init(nBPMS -> _nBPMS)  [[inline]];
+
+    uint32_t    _nBPMS                      -> nBPMS;      /*  Number of BPM in each array    */
+    double      _fBPM_X[@self._nBPMS]       -> fBPM_X;     /*  Array of BPM X values (mm)     */
+    double      _fBPM_Y[@self._nBPMS]       -> fBPM_Y;     /*  Array of BPM Y values (mm)     */
+    double      _fBPM_TMIT[@self._nBPMS]    -> fBPM_TMIT;  /*  Array of BPM TMIT values (Nel) */
+
+}
+
+
 //------------------ BldDataPhaseCavity ------------------
 /* PV names: UND:R02:IOC:16:BAT:FitTime1, UND:R02:IOC:16:BAT:FitTime2,
                 UND:R02:IOC:16:BAT:Charge1,  UND:R02:IOC:16:BAT:Charge2 */
@@ -549,8 +570,8 @@
 
 //------------------ BldDataSpectrometerV1 ------------------
 /* Structure which contains image projections and fit parameters for spectrometers. 
-	Changes from V0 include extending size of hproj, removal of vproj,
-	 and addition of fit parameters. */
+    Changes from V0 include extending size of hproj, removal of vproj,
+     and addition of fit parameters. */
 @type BldDataSpectrometerV1
   [[type_id(Id_Spectrometer, 1)]]
   [[pack(4)]]
