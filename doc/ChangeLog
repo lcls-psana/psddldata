@@ -11,6 +11,10 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-00-43
+2016-06-02 Daniel Damiani
+- bld.ddl: removed value_type tag from BldDataEOrbitsV0
+
 Tag V01-00-42
 2016-04-23 Daniel Damiani
 - bld.ddl: added BldDataEOrbitsV0 electron beam orbit parameters

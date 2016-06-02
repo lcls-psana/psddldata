@@ -411,7 +411,6 @@
 /* Orbit parameters. */
 @type BldDataEOrbitsV0
   [[type_id(Id_EOrbits, 0)]]
-  [[value_type]]
   [[pack(4)]]
 {
     /* Constructor which takes values for every attribute */
