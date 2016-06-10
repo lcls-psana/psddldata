@@ -11,6 +11,10 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-00-45
+2016-06-10 Daniel Damiani
+- partition.ddl: bldMaskHasBitClear and bldMaskHasBitSet methods in ConfigV2 now take uint32_t.
+
 Tag V01-00-44
 2016-06-09 Daniel Damiani
 - partition.ddl: added ConfigV2 to support bld masks with an arbitrary number of bits.

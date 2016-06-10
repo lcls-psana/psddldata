@@ -58,11 +58,11 @@
   [[language("C++")]] @{ for (unsigned idx = 0; idx != _numWords; ++ idx) if (@self.bldMask()[idx]) return 1; return 0; @}
 
   /* Returns non-zero if the bit cooresponding to iBit in the word is set, zero otherwise. */
-  uint32_t bldMaskHasBitSet(uint8_t iBit)
+  uint32_t bldMaskHasBitSet(uint32_t iBit)
   [[language("C++")]] @{ return (@self.bldMask()[iBit >> 5] & (1 << (iBit & 0x1f))); @}
 
   /* Returns non-zero if the bit cooresponding to iBit in the word is unset, zero otherwise. */
-  uint32_t bldMaskHasBitClear(uint8_t iBit)
+  uint32_t bldMaskHasBitClear(uint32_t iBit)
   [[language("C++")]] @{ return !bldMaskHasBitSet(iBit); @}
 
   /* Constructor which takes values for every attribute */
