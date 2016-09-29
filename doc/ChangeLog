@@ -11,6 +11,10 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-00-48
+2016-09-29 Daniel Damiani
+- bld.ddl: change BldDataBeamMonitor to use the standard naming convention -> BldDataBeamMonitorV1
+
 Tag V01-00-47
 2016-09-29 David Schneider
 - bld.ddl: bug fix for BldDataUsbUsdV1
