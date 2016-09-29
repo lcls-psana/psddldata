@@ -11,6 +11,10 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-00-47
+2016-09-29 David Schneider
+- bld.ddl: bug fix for BldDataUsbUsdV1
+
 Tag V01-00-46
 2016-09-27 Daniel Damiani
 - bld.ddl: added BldDataUsdUsbV1 for shared UsdUsb encoder boxes and minor fixes for BldDataBeamMonitor type

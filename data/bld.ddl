@@ -496,7 +496,7 @@
   UsdUsb.ConfigV1 _config -> config;
   UsdUsb.FexConfigV1 _fexConfig -> fexConfig;
   UsdUsb.DataV1 _data -> data;
-  UsdUsb.FexDataV1 _fexData;
+  UsdUsb.FexDataV1 _fexData -> fexData;
 }
 
 
