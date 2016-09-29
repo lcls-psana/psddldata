@@ -662,10 +662,10 @@
   double _channelVoltages[@self._numChannels] -> channelVoltages;
 }
 
-//------------------ BldDataBeamMonitor ------------------
+//------------------ BldDataBeamMonitorV1 ------------------
 /* Intensity and Position Measurements */
-@type BldDataBeamMonitor
-  [[type_id(Id_BeamMonitorBldData, 0)]]
+@type BldDataBeamMonitorV1
+  [[type_id(Id_BeamMonitorBldData, 1)]]
   [[pack(4)]]
 {
   @const int32_t NCHANNELS = 16;
