@@ -11,6 +11,10 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-00-49
+2016-10-17 Daniel Damiani
+- bld.ddl: Fix bug in BldDataBeamMonitorV1 so it reflects the actual recorded data
+
 Tag V01-00-48
 2016-09-29 Daniel Damiani
 - bld.ddl: change BldDataBeamMonitor to use the standard naming convention -> BldDataBeamMonitorV1

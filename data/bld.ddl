@@ -673,9 +673,8 @@
   double _TotalIntensity -> TotalIntensity; /* Value of Total Intensity, in J. */
   double _X_Position -> X_Position; /* Value of X Position, in m. */
   double _Y_Position -> Y_Position; /* Value of Y Position, in m. */
-  double _peakA -> peakA; /* Peak Amplitude of Channel */
-  double _peakT -> peakT; /* Location of Peak Amplitude of Channel */
-  double _Channel_Intensity[NCHANNELS] -> Channel_Intensity; /* Value of Channel Intensity, in J. */
+  double _peakA[NCHANNELS] -> peakA; /* Peak Amplitude of Channel */
+  uint16_t _peakT[NCHANNELS] -> peakT; /* Location of Peak Amplitude of Channel */
 
   /* Constructor which takes values for every attribute */
   @init()  [[auto, inline]];
