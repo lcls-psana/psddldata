@@ -112,4 +112,29 @@
   @init()  [[auto]];
 
 }
+
+//------------------ ControlsCameraConfigV1 ------------------
+/* Class containing configuration data for cameras recorded by the controls recorder. */
+@type ControlsCameraConfigV1
+  [[type_id(Id_ControlsCameraConfig, 1)]]
+  [[config_type]]
+{
+  @const uint16_t DESC_CHAR_MAX = 48;
+
+  @enum ColorMode (uint32_t) {
+    Mono,
+    Bayer,
+    RGB1,
+  }
+
+  uint32_t _width -> width; /* Number of pixels in a row. */
+  uint32_t _height -> height; /* Number of pixels in a column. */
+  uint32_t _depth -> depth; /* Number of bits per pixel. */
+  ColorMode _color_mode -> color_mode; /* The color mode of the camera. */
+  double _exposure_time -> exposure_time; /* The configured exposure time of the camera in seconds. */
+  double _gain -> gain; /* Camera gain value. */
+  char _manufacturer[DESC_CHAR_MAX] -> manufacturer [[shape_method(None)]]; /* The manufacturer of the camera. */
+  char _model[DESC_CHAR_MAX] -> model [[shape_method(None)]]; /* The model name of the camera. */
+}
+
 } //- @package Camera
