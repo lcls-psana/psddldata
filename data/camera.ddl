@@ -135,6 +135,9 @@
   double _gain -> gain; /* Camera gain value. */
   char _manufacturer[DESC_CHAR_MAX] -> manufacturer [[shape_method(None)]]; /* The manufacturer of the camera. */
   char _model[DESC_CHAR_MAX] -> model [[shape_method(None)]]; /* The model name of the camera. */
+
+  /* Constructor which takes values for every attribute */
+  @init()  [[auto]];
 }
 
 } //- @package Camera
