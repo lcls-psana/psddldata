@@ -11,6 +11,10 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-00-52
+2016-12-07 Daniel Damiani
+- archon.ddl: Added devel config type for the Archon controller
+
 Tag V01-00-51
 2016-10-31 Daniel Damiani
 - camera.ddl: Added auto constructor for ControlsCameraConfig
