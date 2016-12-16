@@ -11,6 +11,11 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-00-53
+2016-12-16 Daniel Damiani
+- archon.ddl: Added additional configuration parameters for the Archon controller
+- jungfrau.ddl: Added ConfigV1 and ElementV1 for the Jungfrau detector from PSI
+
 Tag V01-00-52
 2016-12-07 Daniel Damiani
 - archon.ddl: Added devel config type for the Archon controller
