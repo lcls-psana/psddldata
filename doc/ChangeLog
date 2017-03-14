@@ -11,6 +11,10 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-00-55
+2017-03-14 Daniel Damiani
+- quadadc.ddl: Updated ConfigV1 of QuadAdc so that it is a config_type
+
 Tag V01-00-54
 2017-03-14 Daniel Damiani
 - jungfrau.ddl: Added ConfigV2 for the Jungfrau detector from PSI

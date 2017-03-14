@@ -5,7 +5,7 @@
 /* QuadAdc Class */
 @type ConfigV1
   [[type_id(Id_QuadAdcConfig, 0)]]
-  [[value_type]]
+  [[config_type]]
   [[pack(4)]]
 {
   uint32_t _chanMask -> chanMask;	/* Channel Mask. */
