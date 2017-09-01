@@ -31,7 +31,7 @@
 
   /* Total size in bytes of the Frame object */
   uint32_t frameSize()
-  [[language("C++")]] @{ return 12 + @self.numPixels()*2; @}
+  [[language("C++")]] @{ return @self.numPixels()*2; @}
 
   /* calculate total frame size in pixels based on the current ROI and binning settings */
   uint32_t numPixels()  [[inline]]
@@ -81,11 +81,26 @@
 
   /* Total size in bytes of the Frame object */
   uint32_t frameSize()
-  [[language("C++")]] @{ return 12 + @self.numPixels()*2; @}
+  [[language("C++")]] @{ return @self.numPixels()*2; @}
 
   /* calculate total frame size in pixels based on the current ROI and binning settings */
   uint32_t numPixels()  [[inline]]
   [[language("C++")]] @{ return numberOfModules()*numberOfRowsPerModule()*numberOfColumnsPerModule(); @}
+
+  /* Constructor which takes values for every attribute */
+  @init()  [[auto]];
+}
+
+//------------------ ModuleInfoV1 ------------------
+@type ModuleInfoV1
+  [[pack(2)]]
+{
+  uint64_t _timestamp -> timestamp; /* The camera timestamp associated with the detector frame in 100 ns ticks. */
+  uint32_t _exposureTime -> exposureTime; /* The actual exposure time of the image in 100 ns ticks. */
+  uint16_t _moduleID -> moduleID; /* The unique module ID number. */
+  uint16_t _xCoord -> xCoord; /* The X coordinate in the complete detector system. */
+  uint16_t _yCoord -> yCoord; /* The Y coordinate in the complete detector system. */
+  uint16_t _zCoord -> zCoord; /* The Z coordinate in the complete detector system. */
 
   /* Constructor which takes values for every attribute */
   @init()  [[auto]];
@@ -100,6 +115,19 @@
   uint32_t _frameNumber -> frameNumber; /* The internal frame counter number of the detector. */
   uint32_t _ticks -> ticks; /* The LCLS timing tick associated with the detector frame. */
   uint32_t _fiducials -> fiducials; /* The LCLS timing fiducial associated with the detector frame. */
+  uint16_t _frame[@config.numberOfModules()][@config.numberOfRowsPerModule()][@config.numberOfColumnsPerModule()] -> frame;
+}
+
+//------------------ ElementV2 ------------------
+@type ElementV2
+  [[type_id(Id_JungfrauElement, 2)]]
+  [[pack(2)]]
+  [[config(ConfigV1, ConfigV2)]]
+{
+  uint64_t _frameNumber -> frameNumber; /* The internal frame counter number of the detector. */
+  uint32_t _ticks -> ticks; /* The LCLS timing tick associated with the detector frame. */
+  uint32_t _fiducials -> fiducials; /* The LCLS timing fiducial associated with the detector frame. */
+  ModuleInfoV1 _moduleInfo[@config.numberOfModules()] -> moduleInfo; /* Information about each of the modules in the detector system. */
   uint16_t _frame[@config.numberOfModules()][@config.numberOfRowsPerModule()][@config.numberOfColumnsPerModule()] -> frame;
 }
 
