@@ -11,6 +11,10 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-00-59
+2017-12-05 Jack Pines
+- epix.ddl: Add Asic10kaConfigV1 and Config10kaV1 for the Epix10ka detector
+
 Tag V01-00-58
 2017-11-09 Daniel Damiani
 - jungfrau.ddl: Add ModuleConfigV1 and ConfigV3 for the Jungfrau detector from PSI
