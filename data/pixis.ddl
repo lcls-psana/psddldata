@@ -62,7 +62,7 @@
   /* The number of rows in a clean cycle. */
   uint32_t _cleanCycleHeight        -> cleanCycleHeight;
   /* The final height rows for exponential decomposition cleaning. */
-  uint32_t _cleanFinalHeight        -> cleanSectionFinalHeight;
+  uint32_t _cleanFinalHeight        -> cleanFinalHeight;
   /* The final height iterations for exponential decomposition cleaning. */
   uint32_t _cleanFinalHeightCount   -> cleanFinalHeightCount;
 
