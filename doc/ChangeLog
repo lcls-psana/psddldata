@@ -11,6 +11,11 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-00-61
+2018-23-09 Daniel Damiani
+- archon.ddl: Removed devel tag from ConfigV1 for Archon
+- uxi.ddl: Added ConfigV1 and FrameV1 for UXI detector
+
 Tag V01-00-60
 2018-27-08 Daniel Damiani
 - pixis.ddl: Add ConfigV1 and FrameV1 for the Pixis detector
