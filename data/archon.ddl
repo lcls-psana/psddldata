@@ -5,7 +5,6 @@
 @type ConfigV1
   [[type_id(Id_ArchonConfig, 1)]]
   [[config_type]]
-  [[devel]]
 {
   @const uint16_t FILENAME_CHAR_MAX = 256;
   
