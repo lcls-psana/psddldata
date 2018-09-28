@@ -23,7 +23,11 @@
 
   /* Check if a pot is readonly. */
   uint8_t potIsReadOnly(uint8_t i)  [[inline]]
-  [[language("C++")]] @{ return (_readOnlyPots & (1<<i)) ? 1 : 0; @}
+  [[language("C++")]] @{ return ((i<NumberOfPots) && (_readOnlyPots & (1<<i))) ? 1 : 0; @}
+
+  /* Check if a pot was tuned. */
+  uint8_t potIsTuned(uint8_t i) [[inline]]
+  [[language("C++")]] @{ return ((i<NumberOfPots) && (_readOnlyPots & (1<<(i+NumberOfPots)))) ? 1 : 0; @}
 
   /* calculate total number of pixels per frame. */
   uint32_t numPixelsPerFrame()  [[inline]]

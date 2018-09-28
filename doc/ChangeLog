@@ -11,6 +11,14 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-0063
+2018-27-09 Daniel Damiani
+- uxi.ddl: Added a potIsTuned helper method to ConfigV1
+
+Tag V01-00-62
+2018-25-09 Daniel Damiani
+- uxi.ddl: Fixed a bug with the potIsReadOnly method of ConfigV1
+
 Tag V01-00-61
 2018-23-09 Daniel Damiani
 - archon.ddl: Removed devel tag from ConfigV1 for Archon
