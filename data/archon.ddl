@@ -57,4 +57,66 @@
   @init()  [[auto]];
 }
 
+//------------------ ArchonConfigV2 ------------------
+/* Class containing configuration data for CCDs using the Archon controller. */
+@type ConfigV2
+  [[type_id(Id_ArchonConfig, 2)]]
+  [[config_type]]
+{
+  @const uint16_t MaxConfigLines = 1<<14;
+  @const uint16_t MaxConfigLineLength = 2048;
+
+  @enum ReadoutMode (uint16_t) {
+    Single     = 0,
+    Continuous = 1,
+    Triggered  = 2,
+  }
+
+  /* Readout mode of the camera, a.k.a. software vs hardware triggered. */
+  ReadoutMode _readoutMode      ->  readoutMode;
+  /* The event code to use for exposure when software triggering the camera. */
+  uint16_t _exposureEventCode   ->  exposureEventCode;
+  /* The size of the acf file portion of the configuration. */
+  uint32_t _configSize          ->  configSize;
+  /* The count of lines to sweep before beginning a frame. */
+  uint32_t _preFrameSweepCount  ->  preFrameSweepCount;
+  /* The number of lines to sweep per cycle when waiting for triggers. */
+  uint32_t _idleSweepCount      ->  idleSweepCount;
+  /* The time (ms) to expose the sensor. */
+  uint32_t _integrationTime     ->  integrationTime;
+  /* The time (ms) to wait after exposing the sensor before reading it out. */
+  uint32_t _nonIntegrationTime  ->  nonIntegrationTime;
+  //-------- Image Formatting parameters --------
+  /* The number of frames to batch together for readout. */
+  uint32_t _batches             ->  batches;
+  /* The number of pixels to readout from each tap. */
+  uint32_t _pixels              ->  pixels;
+  /* The number of lines to readout from each tap. */
+  uint32_t _lines               ->  lines;
+  /* The horizontal binning setting. */
+  uint32_t _horizontalBinning   ->  horizontalBinning;
+  /* The vertical binning setting. */
+  uint32_t _verticalBinning     ->  verticalBinning;
+  //-------- Sensor Info Parameters --------
+  /* Number of actual pixels per tap. */
+  uint32_t _sensorPixels        -> sensorPixels;
+  /* Number of actual lines per tap. */
+  uint32_t _sensorLines         -> sensorLines;
+  /* Number of taps for the sensor. */
+  uint32_t _sensorTaps          -> sensorTaps;
+  //-------- Timing Parameters --------
+  uint32_t _st    ->  st;
+  uint32_t _stm1  ->  stm1;
+  uint32_t _at    ->  at;
+
+  char _config[@self.configSize()] -> config; /* The contents of the acf file to use with the camera. */
+
+  /* Constructor which takes values for every attribute */
+  @init()  [[auto]];
+
+  /* Constructor which takes values necessary for size calculations */
+  @init(configSize -> _configSize) [[inline]];
+}
+
+
 } //- @package Archon

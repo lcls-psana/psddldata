@@ -11,6 +11,10 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-00-64
+2018-10-10 Daniel Damiani
+- archon.ddl: Added a ConfigV2 for the Archon
+
 Tag V01-00-63
 2018-27-09 Daniel Damiani
 - uxi.ddl: Added a potIsTuned helper method to ConfigV1
