@@ -1483,7 +1483,7 @@
 {
   uint32_t _chipId -> chipId; // read-only
   uint32_t _devIndexMask       -> devIndexMask;
-  uint32_t _devIndexMaskDcoFco -> devIndexMaskDcoVco;
+  uint32_t _devIndexMaskDcoFco -> devIndexMaskDcoFco;
   uint32_t ControlBits {
     uint8_t _extPwdnMode  :1 -> extPwdnMode;
     uint8_t _intPwdnMode  :2 -> intPwdnMode;
