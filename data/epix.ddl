@@ -1593,6 +1593,7 @@
 @type Config10ka2MV1
   [[type_id(Id_Epix10ka2MConfig, 1)]]
   [[pack(4)]]
+  [[config_type]]
 {
   @const uint32_t _numberOfElements = 16;
 
