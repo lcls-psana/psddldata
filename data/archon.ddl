@@ -199,6 +199,18 @@
 
   char _config[@self.configSize()] -> config; /* The contents of the acf file to use with the camera. */
 
+  /* Calculate the frame X size in pixels based on the number of pixels per tap and the number of taps. */
+  uint32_t numPixelsX() [[inline]]
+  [[language("C++")]] @{ return @self.pixels() * @self.sensorTaps(); @}
+
+  /* calculate frame Y size in pixels based on the number of lines per tap. */
+  uint32_t numPixelsY()  [[inline]]
+  [[language("C++")]] @{ return @self.lines(); @}
+
+  /* calculate total frame size in pixels. */
+  uint32_t numPixels()  [[inline]]
+  [[language("C++")]] @{ return @self.numPixelsX() * @self.numPixelsY(); @}
+
   /* Constructor which takes values for every attribute */
   @init()  [[auto]];
 
