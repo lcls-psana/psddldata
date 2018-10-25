@@ -11,6 +11,10 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-00-68
+2018-10-25 Daniel Damiani
+- streak.ddl: Added a ConfigV1 for the C7700 streak camera
+
 Tag V01-00-67
 2018-10-13 Daniel Damiani
 - archon.ddl: Added a ConfigV3 for the Archon
