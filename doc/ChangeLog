@@ -11,6 +11,11 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-00-69
+2018-10-26 Daniel Damiani
+- rayonix.ddl: Added helper functions to the Rayonix Config DDL for getting
+  height and width as well as pixel size
+
 Tag V01-00-68
 2018-10-25 Daniel Damiani
 - streak.ddl: Added a ConfigV1 for the C7700 streak camera
