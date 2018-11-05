@@ -1504,7 +1504,7 @@
   @init()  [[auto]];
 }
 
-@type Config10kaQuadV1
+@type Config10kaQuad
   [[pack(4)]]
 {
         // Global
@@ -1519,6 +1519,7 @@
   uint32_t _asicDigEn      -> asicDigEn;
   uint32_t _ddrVttEn       -> ddrVttEn;
   uint32_t _trigSrcSel     -> trigSrcSel;
+  uint32_t _vguardDac      -> vguardDac;
         // AcqCore
   uint32_t _acqToAsicR0Delay -> acqToAsicR0Delay;
   uint32_t _asicR0Width      -> asicR0Width;
@@ -1589,6 +1590,31 @@
   @init()  [[auto]];
 }
 
+//------------------ Config10kaQuadV1 ------------------
+@type Config10kaQuadV1
+  [[type_id(Id_Epix10kaQuadConfig, 1)]]
+  [[pack(4)]]
+  [[config_type]]
+{
+  @const uint32_t _numberOfElements = 4;
+
+  uint32_t numberOfElements()  [[inline]]
+  [[language("C++")]] @{ return @self._numberOfElements; @}
+  uint32_t numberOfRows() [[language("C++")]] @{ return Config10ka::_numberOfAsicsPerColumn * Config10ka::_numberOfRowsPerAsic; @}
+  uint32_t numberOfReadableRows() [[language("C++")]] @{ return Config10ka::_numberOfAsicsPerColumn * Config10ka::_numberOfReadableRowsPerAsic; @}
+  uint32_t numberOfColumns() [[language("C++")]] @{ return Config10ka::_numberOfAsicsPerRow * Config10ka::_numberOfPixelsPerAsicRow; @}
+  uint32_t numberOfCalibrationRows() [[language("C++")]] @{ return Config10ka::_calibrationRowCountPerASIC * Config10ka::_numberOfAsicsPerColumn; @}
+  uint32_t numberOfEnvironmentalRows() [[language("C++")]] @{ return Config10ka::_environmentalRowCountPerASIC * Config10ka::_numberOfAsicsPerColumn; @}
+  uint32_t numberOfAsics() [[language("C++")]] @{ return Config10ka::_numberOfAsicsPerRow * Config10ka::_numberOfAsicsPerColumn * @self._numberOfElements; @}
+
+  PgpEvrConfig     _evr     -> evr;
+  Config10kaQuad   _quad    -> quad;
+  Config10ka       _elem[4] -> elemCfg;
+
+  /* Constructor which takes values for every attribute */
+  @init()  [[auto]];
+}
+
 //------------------ Config10ka2MV1 ------------------
 @type Config10ka2MV1
   [[type_id(Id_Epix10ka2MConfig, 1)]]
@@ -1607,7 +1633,7 @@
   uint32_t numberOfAsics() [[language("C++")]] @{ return Config10ka::_numberOfAsicsPerRow * Config10ka::_numberOfAsicsPerColumn * @self._numberOfElements; @}
 
   PgpEvrConfig     _evr     -> evr;
-  Config10kaQuadV1 _quad [4]-> quad;
+  Config10kaQuad   _quad [4]-> quad;
   Config10ka       _elem[16]-> elemCfg;
 
   /* Constructor which takes values for every attribute */
@@ -1715,6 +1741,7 @@
   [[type_id(Id_Epix10kaArray, 1)]]
   [[pack(4)]]
   [[config(Config10ka2MV1)]]
+  [[config(Config10kaQuadV1)]]
 {
   uint32_t _frameNumber -> frameNumber;
   uint16_t _frame             [@config.numberOfElements()][@config.numberOfReadableRows()][@config.numberOfColumns()]         -> frame;
