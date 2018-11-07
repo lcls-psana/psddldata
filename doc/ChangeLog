@@ -11,6 +11,10 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-00-71
+2018-11-7 Matt Weaver
+- epix.ddl: and digitalCardId for epix10kaquad.
+
 Tag V01-00-70
 2018-11-7 Matt Weaver
 - epix.ddl: Add Epix10ka quad and 2m support.
