@@ -1513,6 +1513,8 @@
   uint32_t _numberOf125MhzTicksPerRunTrigger -> numberOf125MhzTicksPerRunTrigger;
 
         // AxiVersion (RO)
+  uint32_t _digitalCardId0 -> digitalCardId0;
+  uint32_t _digitalCardId1 -> digitalCardId1;
         // SystemRegs
   uint32_t _dcdcEn         -> dcdcEn;
   uint32_t _asicAnaEn      -> asicAnaEn;
