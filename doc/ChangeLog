@@ -11,6 +11,10 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-00-73
+2020-01-29 Daniel Damiani
+- jungfrau.ddl: Added a SegmentConfigV1 for the Jungfrau.
+
 Tag V01-00-72
 2018-11-7 Daniel Damiani
 - archon.dll: Added a ConfigV4 for the Archon

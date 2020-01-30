@@ -1,3 +1,4 @@
+@include "psddldata/xtc.ddl" [[headers("pdsdata/xtc/DetInfo.hh")]];
 @package Jungfrau {
 
 //------------------ ModuleConfigV1 ------------------
@@ -156,6 +157,20 @@
   /* calculate total frame size in pixels based on the current ROI and binning settings */
   uint32_t numPixels()  [[inline]]
   [[language("C++")]] @{ return numberOfModules()*numberOfRowsPerModule()*numberOfColumnsPerModule(); @}
+
+  /* Constructor which takes values for every attribute */
+  @init()  [[auto]];
+}
+
+//------------------ SegmentConfigV1 ------------------
+@type SegmentConfigV1
+  [[type_id(Id_JungfrauSegmentConfig, 1)]]
+  [[config_type]]
+  [[pack(4)]]
+{
+  Pds.DetInfo _parent -> parent;  /* The DetInfo of the parent detector of this Jungfrau segment. */
+  uint32_t _index -> index;       /* The index number of this Jungfrau segment. */
+  ConfigV3 _config -> config;     /* The standard Jungfrau detector config to use for this segment. */
 
   /* Constructor which takes values for every attribute */
   @init()  [[auto]];
