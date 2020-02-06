@@ -11,6 +11,10 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-00-75
+2020-02-06 Daniel Damiani
+- jungfrau.ddl: Add constuctor to ElementV2 for the Jungfrau.
+
 Tag V01-00-74
 2020-01-31 Daniel Damiani
 - jungfrau.ddl: Removed the SegmentConfigV1 for the Jungfrau.

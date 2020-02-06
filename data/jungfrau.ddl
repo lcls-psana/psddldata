@@ -199,6 +199,9 @@
   uint32_t _fiducials -> fiducials; /* The LCLS timing fiducial associated with the detector frame. */
   ModuleInfoV1 _moduleInfo[@config.numberOfModules()] -> moduleInfo; /* Information about each of the modules in the detector system. */
   uint16_t _frame[@config.numberOfModules()][@config.numberOfRowsPerModule()][@config.numberOfColumnsPerModule()] -> frame;
+
+  /* Constructor which takes values for scalar attributes */
+  @init(frameNumber -> _frameNumber, ticks -> _ticks, fiducials -> _fiducials) [[inline]];
 }
 
 } //- @package Jungfrau
