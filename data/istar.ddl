@@ -1,9 +1,8 @@
-@include "psddldata/istar.ddl";
-@package Zyla {
+@package iStar {
 
 //------------------ ConfigV1 ------------------
 @type ConfigV1
-  [[type_id(Id_ZylaConfig, 1)]]
+  [[type_id(Id_iStarConfig, 1)]]
   [[config_type]]
   [[pack(4)]]
 {
@@ -14,22 +13,14 @@
     True  = 1,
   }
 
-  @enum ShutteringMode (uint8_t) {
-    Rolling = 0,
-    Global  = 1,
-  }
-
   @enum FanSpeed (uint8_t) {
     Off = 0,
-    Low = 1,
-    On  = 2,
+    On  = 1,
   }
 
   @enum ReadoutRate (uint8_t) {
     Rate280MHz = 0,
-    Rate200MHz = 1,
-    Rate100MHz = 2,
-    Rate10MHz  = 3,
+    Rate100MHz = 1,
   }
 
   @enum TriggerMode (uint8_t) {
@@ -48,30 +39,36 @@
     LowNoiseHighWellCap16Bit  = 2,
   }
 
-  @enum CoolingSetpoint (uint8_t) {
-    Temp_0C = 0,
-    Temp_Neg5C = 1,
-    Temp_Neg10C = 2,
-    Temp_Neg15C = 3,
-    Temp_Neg20C = 4,
-    Temp_Neg25C = 5,
-    Temp_Neg30C = 6,
-    Temp_Neg35C = 7,
-    Temp_Neg40C = 8,
+  @enum GateMode (uint8_t) {
+    CWOn        = 0,
+    CWOff       = 1,
+    FireOnly    = 2,
+    GateOnly    = 3,
+    FireAndGate = 4,
+    DDG         = 5,
+  }
+
+  @enum InsertionDelay (uint8_t) {
+    Normal = 0,
+    Fast   = 1,
   }
 
   ATBool _cooling           -> cooling;
   ATBool _overlap           -> overlap;
   ATBool _noiseFilter       -> noiseFilter;
   ATBool _blemishCorrection -> blemishCorrection;
+  ATBool _mcpIntelligate    -> mcpIntelligate;
 
-  ShutteringMode _shutter   -> shutter;
-  FanSpeed _fanSpeed        -> fanSpeed;
-  ReadoutRate _readoutRate  -> readoutRate;
-  TriggerMode _triggerMode  -> triggerMode;
-  GainMode _gainMode        -> gainMode;
-  CoolingSetpoint _setpoint -> setpoint;
-  uint16_t _pad0;
+  FanSpeed       _fanSpeed       -> fanSpeed;
+  ReadoutRate    _readoutRate    -> readoutRate;
+  TriggerMode    _triggerMode    -> triggerMode;
+  GainMode       _gainMode       -> gainMode;
+  GateMode       _gateMode       -> gateMode;
+  InsertionDelay _insertionDelay -> insertionDelay;
+  uint8_t _pad0;
+
+  uint16_t _mcpGain         -> mcpGain;
+  uint16_t _pad1;
 
   uint32_t _width   -> width;
   uint32_t _height  -> height;
@@ -104,18 +101,4 @@
 
 }
 
-//------------------ FrameV1 ------------------
-@type FrameV1
-  [[type_id(Id_ZylaFrame, 1)]]
-  [[pack(2)]]
-  [[config(ConfigV1, iStar.ConfigV1)]]
-{
-  uint64_t _timestamp -> timestamp; /* The internal camera FPGA clock timestamp for the frame. */
-  uint16_t _data[@config.numPixelsY()][@config.numPixelsX()] -> data;
-
-  /* Constructor with values for scalar attributes */
-  @init(timestamp -> _timestamp)  [[inline]];
-}
-
-
-} //- @package Zyla
+} //- @package iStar
