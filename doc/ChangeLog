@@ -11,6 +11,11 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-00-77
+2021-03-25 Daniel Damiani
+- bld.ddl: added ConfigV4 for ControlData which supports longer PVLabels.
+- control.ddl: added BldDataPhaseCavityV1.
+
 Tag V01-00-76
 2020-09-30 Daniel Damiani
 - istar.ddl: Added a ConfigV1 for the Andor iStar sCMOS detector.
