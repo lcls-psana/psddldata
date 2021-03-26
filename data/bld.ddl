@@ -446,6 +446,23 @@
 
 }
 
+//------------------ BldDataPhaseCavityV1 ------------------
+/* PV names: UND:R02:IOC:16:BAT:FitTime1, UND:R02:IOC:16:BAT:FitTime2,
+                UND:R02:IOC:16:BAT:Charge1,  UND:R02:IOC:16:BAT:Charge2 */
+@type BldDataPhaseCavityV1
+  [[type_id(Id_PhaseCavity, 1)]]
+  [[value_type]]
+  [[pack(4)]]
+{
+  double _fFitTime1 -> fitTime1;  /* UND:R02:IOC:16:BAT:FitTime1 value in pico-seconds. */
+  double _fFitTime2 -> fitTime2;  /* UND:R02:IOC:16:BAT:FitTime2 value in pico-seconds. */
+  double _fCharge1 -> charge1;  /* UND:R02:IOC:16:BAT:Charge1 value in pico-columbs. */
+  double _fCharge2 -> charge2;  /* UND:R02:IOC:16:BAT:Charge2 value in pico-columbs. */
+
+  /* Constructor which takes values for every attribute */
+  @init()  [[auto, inline]];
+
+}
 
 //------------------ BldDataIpimbV0 ------------------
 /* Combined structure which includes Ipimb.DataV1, Ipimb.ConfigV1, and
