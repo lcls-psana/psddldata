@@ -1407,8 +1407,151 @@
 
 }
 
+//------------------ Config10kaV2 ------------------
+@type Config10kaV2
+  [[type_id(Id_Epix10kaConfig, 2)]]
+  [[config_type]]
+  [[pack(4)]]
+{
+  @const int32_t FirmwareHashMax = 64;
+  @const int32_t FirmwareDescMax = 256;
+
+  uint32_t _version          -> version;
+  uint32_t _usePgpEvr        -> usePgpEvr;
+  uint32_t _evrRunCode       -> evrRunCode;
+  uint32_t _evrDaqCode       -> evrDaqCode;
+  uint32_t _evrRunTrigDelay  -> evrRunTrigDelay;
+  uint32_t _epixRunTrigDelay -> epixRunTrigDelay;
+  uint32_t _epixDaqTrigDelay -> epixDaqTrigDelay;
+  uint32_t _dacSetting       -> dacSetting;
+  uint32_t _asicPins {
+    uint8_t _asicGR:1    -> asicGR;
+    uint8_t _asicAcq:1   -> asicAcq;
+    uint8_t _asicR0:1    -> asicR0;
+    uint8_t _asicPpmat:1 -> asicPpmat;
+    uint8_t _asicPpbe:1  -> asicPpbe;
+    uint8_t _asicRoClk:1 -> asicRoClk;
+    uint32_t _z:26;
+  }
+  uint32_t _asicControls {
+    uint8_t _asicGRControl:1     -> asicGRControl;
+    uint8_t _asicAcqControl:1    -> asicAcqControl;
+    uint8_t _asicR0Control:1     -> asicR0Control;
+    uint8_t _asicPpmatControl:1  -> asicPpmatControl;
+    uint8_t _asicPpbeControl:1   -> asicPpbeControl;
+    uint8_t _asicR0ClkControl:1  -> asicR0ClkControl;
+    uint8_t _prepulseR0En:1      -> prepulseR0En;
+    uint32_t _adcStreamMode:1    -> adcStreamMode;
+    uint8_t _testPatternEnable:1 -> testPatternEnable;
+    uint8_t _z1:23;
+  }
+  uint32_t _acqToAsicR0Delay -> acqToAsicR0Delay;
+  uint32_t _asicR0ToAsicAcq -> asicR0ToAsicAcq;
+  uint32_t _asicAcqWidth -> asicAcqWidth;
+  uint32_t _asicAcqLToPPmatL -> asicAcqLToPPmatL;
+  uint32_t _asicPPmatToReadout -> asicPPmatToReadout;
+  uint32_t _asicRoClkHalfT -> asicRoClkHalfT;
+  uint32_t _adcClkHalfT -> adcClkHalfT;
+  uint32_t _asicR0Width -> asicR0Width;
+  uint32_t _adcPipelineDelay -> adcPipelineDelay;
+  uint32_t _adcPipelineDelay0 -> adcPipelineDelay0;
+  uint32_t _adcPipelineDelay1 -> adcPipelineDelay1;
+  uint32_t _adcPipelineDelay2 -> adcPipelineDelay2;
+  uint32_t _adcPipelineDelay3 -> adcPipelineDelay3;
+  uint32_t _Sync {  // new
+    uint16_t _SyncWidth:16 -> SyncWidth;
+    uint16_t _SyncDelay:16 -> SyncDelay;
+  }  // new
+  uint32_t _prepulseR0Width -> prepulseR0Width;
+  uint32_t _prepulseR0Delay -> prepulseR0Delay;
+  uint32_t _digitalCardId0 -> digitalCardId0;
+  uint32_t _digitalCardId1 -> digitalCardId1;
+  uint32_t _analogCardId0 -> analogCardId0;
+  uint32_t _analogCardId1 -> analogCardId1;
+  uint32_t _carrierId0 -> carrierId0;
+  uint32_t _carrierId1 -> carrierId1;
+  uint32_t _numberOfAsicsPerRow -> numberOfAsicsPerRow;
+  uint32_t _numberOfAsicsPerColumn -> numberOfAsicsPerColumn;
+  uint32_t _numberOfRowsPerAsic -> numberOfRowsPerAsic;
+  uint32_t _numberOfReadableRowsPerAsic -> numberOfReadableRowsPerAsic;
+  // for epix10ka  176
+  uint32_t _numberOfPixelsPerAsicRow -> numberOfPixelsPerAsicRow;
+  // for epix10ka 96*4 = 384
+  uint32_t _calibrationRowCountPerASIC -> calibrationRowCountPerASIC;
+  uint32_t _environmentalRowCountPerASIC -> environmentalRowCountPerASIC;
+  uint32_t _baseClockFrequency -> baseClockFrequency;
+  uint32_t _asicMask -> asicMask;
+  uint32_t _enableAutomaticRunTrigger -> enableAutomaticRunTrigger;
+  uint32_t _numberOf125MhzTicksPerRunTrigger -> numberOf125MhzTicksPerRunTrigger;
+  uint32_t _ghostCorrEn -> ghostCorrEn;
+  uint32_t _oversampleEn -> oversampleEn;
+  uint32_t _oversampleSize -> oversampleSize;
+  uint32_t _Scope {
+    uint8_t _scopeEnable:1 -> scopeEnable;
+    uint8_t _scopeTrigEdge:1 -> scopeTrigEdge;
+    uint8_t _scopeTrigChan:4 -> scopeTrigChan;
+    uint8_t _scopeArmMode:2 -> scopeArmMode;
+    uint8_t _z:8;
+    uint16_t _scopeADCThreshold:16 -> scopeADCThreshold;
+  }
+  uint32_t _ScopeTriggerParms_1 {
+    uint16_t _scopeTrigHoldoff:13 -> scopeTrigHoldoff;
+    uint16_t _scopeTrigOffset:13 -> scopeTrigOffset;
+  }
+  uint32_t _ScopeTriggerParms_2 {
+    uint16_t _scopeTraceLength:13 -> scopeTraceLength;
+    uint16_t _scopeADCsameplesToSkip:13 -> scopeADCsameplesToSkip;
+  }
+  uint32_t _ScopeWaveformSelects {
+    uint8_t _scopeChanAwaveformSelect:5 -> scopeChanAwaveformSelect;
+    uint8_t _scopeChanBwaveformSelect:5 -> scopeChanBwaveformSelect;
+    uint32_t _z:22;
+  }
+  char _firmwareHash[FirmwareHashMax] -> firmwareHash;
+  char _firmwareDesc[FirmwareDescMax] -> firmwareDesc;
+  Asic10kaConfigV1 _asics[@self.numberOfAsicsPerRow()*@self.numberOfAsicsPerColumn()] -> asics;
+  uint16_t _asicPixelConfigArray[ @self.numberOfRows()][ @self.numberOfColumns()] -> asicPixelConfigArray;
+
+  /* Calibration row config map is one row for every two calib rows */
+  uint8_t  _calibPixelConfigArray[ @self.numberOfCalibrationRows()  / 2 ][ @self.numberOfPixelsPerAsicRow()*@self.numberOfAsicsPerRow()] -> calibPixelConfigArray;
+
+  /* Number of pixel rows in a readout unit */
+  uint32_t numberOfRows()  [[inline]]
+  [[language("C++")]] @{ return @self.numberOfAsicsPerColumn()*@self.numberOfRowsPerAsic(); @}
+
+  /* Number of readable pixel rows in a readout unit */
+  uint32_t numberOfReadableRows()  [[inline]]
+  [[language("C++")]] @{ return @self.numberOfAsicsPerColumn()*@self.numberOfReadableRowsPerAsic(); @}
+
+  /* Number of pixel columns in a readout unit */
+  uint32_t numberOfColumns()  [[inline]]
+  [[language("C++")]] @{ return  @self.numberOfAsicsPerRow()*@self.numberOfPixelsPerAsicRow(); @}
+
+  /* Number of calibration rows in a readout unit */
+  uint32_t numberOfCalibrationRows()  [[inline]]
+  [[language("C++")]] @{ return @self.numberOfAsicsPerColumn()*@self.calibrationRowCountPerASIC(); @}
+
+  /* Number of rows in a readout unit */
+  uint32_t numberOfEnvironmentalRows()  [[inline]]
+  [[language("C++")]] @{ return @self.numberOfAsicsPerColumn()*@self.environmentalRowCountPerASIC(); @}
+
+  /* Number of columns in a readout unit */
+  uint32_t numberOfAsics()  [[inline]]
+  [[language("C++")]] @{ return  @self.numberOfAsicsPerRow()*@self.numberOfAsicsPerColumn(); @}
+
+  /* Constructor which takes values for every attribute */
+  @init()  [[auto]];
+
+  /* Constructor which takes values necessary for size calculations */
+  @init(numberOfAsicsPerRow -> _numberOfAsicsPerRow, numberOfAsicsPerColumn -> _numberOfAsicsPerColumn,
+      numberOfRowsPerAsic -> _numberOfRowsPerAsic, numberOfPixelsPerAsicRow -> _numberOfPixelsPerAsicRow,
+      calibrationRowCountPerASIC -> _calibrationRowCountPerASIC)  [[inline]];
+
+}
+
+
 //----  Configuration object for offline analysis of an Epix10ka element ----//
-@type Config10ka
+@type Elem10kaConfigV1
   [[config_type]]
   [[pack(4)]]
 {
@@ -1504,7 +1647,7 @@
   @init()  [[auto]];
 }
 
-@type Config10kaQuad
+@type Quad10kaConfigV1
   [[pack(4)]]
 {
         // Global
@@ -1592,6 +1735,105 @@
   @init()  [[auto]];
 }
 
+@type Quad10kaConfigV2
+  [[pack(4)]]
+{
+  @const int32_t FirmwareHashMax = 64;
+  @const int32_t FirmwareDescMax = 256;
+        // Global
+  uint32_t _baseClockFrequency               -> baseClockFrequency;
+  uint32_t _enableAutomaticRunTrigger        -> enableAutomaticRunTrigger;
+  uint32_t _numberOf125MhzTicksPerRunTrigger -> numberOf125MhzTicksPerRunTrigger;
+
+        // AxiVersion (RO)
+  uint32_t _firmwareVersion               -> firmwareVersion;
+  uint32_t _digitalCardId0                -> digitalCardId0;
+  uint32_t _digitalCardId1                -> digitalCardId1;
+  char     _firmwareHash[FirmwareHashMax] -> firmwareHash;
+  char     _firmwareDesc[FirmwareDescMax] -> firmwareDesc;
+        // SystemRegs
+  uint32_t _dcdcEn         -> dcdcEn;
+  uint32_t _asicAnaEn      -> asicAnaEn;
+  uint32_t _asicDigEn      -> asicDigEn;
+  uint32_t _ddrVttEn       -> ddrVttEn;
+  uint32_t _trigSrcSel     -> trigSrcSel;
+  uint32_t _vguardDac      -> vguardDac;
+        // AcqCore
+  uint32_t _acqToAsicR0Delay -> acqToAsicR0Delay;
+  uint32_t _asicR0Width      -> asicR0Width;
+  uint32_t _asicR0ToAsicAcq  -> asicR0ToAsicAcq;
+  uint32_t _asicAcqWidth     -> asicAcqWidth;
+  uint32_t _asicAcqLToPPmatL -> asicAcqLToPPmatL;
+  uint32_t _asicPPmatToReadout -> asicPPmatToReadout;
+  uint32_t _asicRoClkHalfT     -> asicRoClkHalfT;
+
+  uint32_t _asicForce {
+    uint8_t asicAcqForce    :1    -> asicAcqForce;
+    uint8_t asicR0Force     :1    -> asicR0Force;
+    uint8_t asicPPmatForce  :1    -> asicPPmatForce;
+    uint8_t asicSyncForce   :1    -> asicSyncForce;
+    uint8_t asicRoClkForce  :1    -> asicRoClkForce;
+    uint32_t _z   :27;
+  }
+  uint32_t _asicForceValue {
+    uint8_t asicAcqValue    :1    -> asicAcqValue;
+    uint8_t asicR0Value     :1    -> asicR0Value;
+    uint8_t asicPPmatValue  :1    -> asicPPmatValue;
+    uint8_t asicSyncValue   :1    -> asicSyncValue;
+    uint8_t asicRoClkValue  :1    -> asicRoClkValue;
+    uint32_t _z   :27;
+  }
+
+  uint32_t _dummyAcqEn      -> dummyAcqEn;
+  uint32_t _asicSyncInjEn   -> asicSyncInjEn;
+  uint32_t _asicSyncInjDly  -> asicSyncInjDly;
+
+        // RdoutCore
+  uint32_t _adcPipelineDelay -> adcPipelineDelay;
+  uint32_t _testData         -> testData;
+  uint32_t _overSampleEn     -> overSampleEn;
+  uint32_t _overSampleSize   -> overSampleSize;
+
+        // PseudoScopeCore
+  uint32_t _Scope {
+    uint8_t _scopeEnable:1 -> scopeEnable;
+    uint8_t _scopeTrigEdge:1 -> scopeTrigEdge;
+    uint8_t _scopeTrigChan:5 -> scopeTrigChan;
+    uint8_t _scopeTrigMode:2 -> scopeTrigMode;
+    uint8_t _z:7;
+    uint16_t _scopeADCThreshold:16 -> scopeADCThreshold;
+  }
+  uint32_t _ScopeTriggerParms_1 {
+    uint16_t _scopeTrigHoldoff:13 -> scopeTrigHoldoff;
+    uint16_t _scopeTrigOffset:13  -> scopeTrigOffset;
+  }
+  uint32_t _ScopeTriggerParms_2 {
+    uint16_t _scopeTraceLength:13 -> scopeTraceLength;
+    uint16_t _scopeADCsamplesToSkip:13 -> scopeADCsamplesToSkip;
+  }
+  uint32_t _ScopeWaveformSelects {
+    uint8_t _scopeChanAwaveformSelect:7 -> scopeChanAwaveformSelect;
+    uint8_t _scopeChanBwaveformSelect:7 -> scopeChanBwaveformSelect;
+    uint32_t _z:18;
+  }
+  uint32_t _scopeTrigDelay -> scopeTrigDelay;
+
+        // Ad9249ReadoutGroup [10]
+        // Ad9249ConfigGroup [10]
+  Ad9249Config _adc[10]  -> adc;
+
+        // AdcTester
+  uint32_t _testChannel  -> testChannel;
+  uint32_t _testDataMask -> testDataMask;
+  uint32_t _testPattern  -> testPattern;
+  uint32_t _testSamples  -> testSamples;
+  uint32_t _testTimeout  -> testTimeout;
+  uint32_t _testRequest  -> testRequest;
+
+  /* Constructor which takes values for every attribute */
+  @init()  [[auto]];
+}
+
 //------------------ Config10kaQuadV1 ------------------
 @type Config10kaQuadV1
   [[type_id(Id_Epix10kaQuadConfig, 1)]]
@@ -1602,16 +1844,41 @@
 
   uint32_t numberOfElements()  [[inline]]
   [[language("C++")]] @{ return @self._numberOfElements; @}
-  uint32_t numberOfRows() [[language("C++")]] @{ return Config10ka::_numberOfAsicsPerColumn * Config10ka::_numberOfRowsPerAsic; @}
-  uint32_t numberOfReadableRows() [[language("C++")]] @{ return Config10ka::_numberOfAsicsPerColumn * Config10ka::_numberOfReadableRowsPerAsic; @}
-  uint32_t numberOfColumns() [[language("C++")]] @{ return Config10ka::_numberOfAsicsPerRow * Config10ka::_numberOfPixelsPerAsicRow; @}
-  uint32_t numberOfCalibrationRows() [[language("C++")]] @{ return Config10ka::_calibrationRowCountPerASIC * Config10ka::_numberOfAsicsPerColumn; @}
-  uint32_t numberOfEnvironmentalRows() [[language("C++")]] @{ return Config10ka::_environmentalRowCountPerASIC * Config10ka::_numberOfAsicsPerColumn; @}
-  uint32_t numberOfAsics() [[language("C++")]] @{ return Config10ka::_numberOfAsicsPerRow * Config10ka::_numberOfAsicsPerColumn * @self._numberOfElements; @}
+  uint32_t numberOfRows() [[language("C++")]] @{ return Elem10kaConfigV1::_numberOfAsicsPerColumn * Elem10kaConfigV1::_numberOfRowsPerAsic; @}
+  uint32_t numberOfReadableRows() [[language("C++")]] @{ return Elem10kaConfigV1::_numberOfAsicsPerColumn * Elem10kaConfigV1::_numberOfReadableRowsPerAsic; @}
+  uint32_t numberOfColumns() [[language("C++")]] @{ return Elem10kaConfigV1::_numberOfAsicsPerRow * Elem10kaConfigV1::_numberOfPixelsPerAsicRow; @}
+  uint32_t numberOfCalibrationRows() [[language("C++")]] @{ return Elem10kaConfigV1::_calibrationRowCountPerASIC * Elem10kaConfigV1::_numberOfAsicsPerColumn; @}
+  uint32_t numberOfEnvironmentalRows() [[language("C++")]] @{ return Elem10kaConfigV1::_environmentalRowCountPerASIC * Elem10kaConfigV1::_numberOfAsicsPerColumn; @}
+  uint32_t numberOfAsics() [[language("C++")]] @{ return Elem10kaConfigV1::_numberOfAsicsPerRow * Elem10kaConfigV1::_numberOfAsicsPerColumn * @self._numberOfElements; @}
 
   PgpEvrConfig     _evr     -> evr;
-  Config10kaQuad   _quad    -> quad;
-  Config10ka       _elem[4] -> elemCfg;
+  Quad10kaConfigV1 _quad    -> quad;
+  Elem10kaConfigV1 _elem[4] -> elemCfg;
+
+  /* Constructor which takes values for every attribute */
+  @init()  [[auto]];
+}
+
+//------------------ Config10kaQuadV2 ------------------
+@type Config10kaQuadV2
+  [[type_id(Id_Epix10kaQuadConfig, 2)]]
+  [[pack(4)]]
+  [[config_type]]
+{
+  @const uint32_t _numberOfElements = 4;
+
+  uint32_t numberOfElements()  [[inline]]
+  [[language("C++")]] @{ return @self._numberOfElements; @}
+  uint32_t numberOfRows() [[language("C++")]] @{ return Elem10kaConfigV1::_numberOfAsicsPerColumn * Elem10kaConfigV1::_numberOfRowsPerAsic; @}
+  uint32_t numberOfReadableRows() [[language("C++")]] @{ return Elem10kaConfigV1::_numberOfAsicsPerColumn * Elem10kaConfigV1::_numberOfReadableRowsPerAsic; @}
+  uint32_t numberOfColumns() [[language("C++")]] @{ return Elem10kaConfigV1::_numberOfAsicsPerRow * Elem10kaConfigV1::_numberOfPixelsPerAsicRow; @}
+  uint32_t numberOfCalibrationRows() [[language("C++")]] @{ return Elem10kaConfigV1::_calibrationRowCountPerASIC * Elem10kaConfigV1::_numberOfAsicsPerColumn; @}
+  uint32_t numberOfEnvironmentalRows() [[language("C++")]] @{ return Elem10kaConfigV1::_environmentalRowCountPerASIC * Elem10kaConfigV1::_numberOfAsicsPerColumn; @}
+  uint32_t numberOfAsics() [[language("C++")]] @{ return Elem10kaConfigV1::_numberOfAsicsPerRow * Elem10kaConfigV1::_numberOfAsicsPerColumn * @self._numberOfElements; @}
+
+  PgpEvrConfig     _evr     -> evr;
+  Quad10kaConfigV2 _quad    -> quad;
+  Elem10kaConfigV1 _elem[4] -> elemCfg;
 
   /* Constructor which takes values for every attribute */
   @init()  [[auto]];
@@ -1627,16 +1894,41 @@
 
   uint32_t numberOfElements()  [[inline]]
   [[language("C++")]] @{ return @self._numberOfElements; @}
-  uint32_t numberOfRows() [[language("C++")]] @{ return Config10ka::_numberOfAsicsPerColumn * Config10ka::_numberOfRowsPerAsic; @}
-  uint32_t numberOfReadableRows() [[language("C++")]] @{ return Config10ka::_numberOfAsicsPerColumn * Config10ka::_numberOfReadableRowsPerAsic; @}
-  uint32_t numberOfColumns() [[language("C++")]] @{ return Config10ka::_numberOfAsicsPerRow * Config10ka::_numberOfPixelsPerAsicRow; @}
-  uint32_t numberOfCalibrationRows() [[language("C++")]] @{ return Config10ka::_calibrationRowCountPerASIC * Config10ka::_numberOfAsicsPerColumn; @}
-  uint32_t numberOfEnvironmentalRows() [[language("C++")]] @{ return Config10ka::_environmentalRowCountPerASIC * Config10ka::_numberOfAsicsPerColumn; @}
-  uint32_t numberOfAsics() [[language("C++")]] @{ return Config10ka::_numberOfAsicsPerRow * Config10ka::_numberOfAsicsPerColumn * @self._numberOfElements; @}
+  uint32_t numberOfRows() [[language("C++")]] @{ return Elem10kaConfigV1::_numberOfAsicsPerColumn * Elem10kaConfigV1::_numberOfRowsPerAsic; @}
+  uint32_t numberOfReadableRows() [[language("C++")]] @{ return Elem10kaConfigV1::_numberOfAsicsPerColumn * Elem10kaConfigV1::_numberOfReadableRowsPerAsic; @}
+  uint32_t numberOfColumns() [[language("C++")]] @{ return Elem10kaConfigV1::_numberOfAsicsPerRow * Elem10kaConfigV1::_numberOfPixelsPerAsicRow; @}
+  uint32_t numberOfCalibrationRows() [[language("C++")]] @{ return Elem10kaConfigV1::_calibrationRowCountPerASIC * Elem10kaConfigV1::_numberOfAsicsPerColumn; @}
+  uint32_t numberOfEnvironmentalRows() [[language("C++")]] @{ return Elem10kaConfigV1::_environmentalRowCountPerASIC * Elem10kaConfigV1::_numberOfAsicsPerColumn; @}
+  uint32_t numberOfAsics() [[language("C++")]] @{ return Elem10kaConfigV1::_numberOfAsicsPerRow * Elem10kaConfigV1::_numberOfAsicsPerColumn * @self._numberOfElements; @}
 
   PgpEvrConfig     _evr     -> evr;
-  Config10kaQuad   _quad [4]-> quad;
-  Config10ka       _elem[16]-> elemCfg;
+  Quad10kaConfigV1 _quad [4]-> quad;
+  Elem10kaConfigV1 _elem[16]-> elemCfg;
+
+  /* Constructor which takes values for every attribute */
+  @init()  [[auto]];
+}
+
+//------------------ Config10ka2MV2 ------------------
+@type Config10ka2MV2
+  [[type_id(Id_Epix10ka2MConfig, 2)]]
+  [[pack(4)]]
+  [[config_type]]
+{
+  @const uint32_t _numberOfElements = 16;
+
+  uint32_t numberOfElements()  [[inline]]
+  [[language("C++")]] @{ return @self._numberOfElements; @}
+  uint32_t numberOfRows() [[language("C++")]] @{ return Elem10kaConfigV1::_numberOfAsicsPerColumn * Elem10kaConfigV1::_numberOfRowsPerAsic; @}
+  uint32_t numberOfReadableRows() [[language("C++")]] @{ return Elem10kaConfigV1::_numberOfAsicsPerColumn * Elem10kaConfigV1::_numberOfReadableRowsPerAsic; @}
+  uint32_t numberOfColumns() [[language("C++")]] @{ return Elem10kaConfigV1::_numberOfAsicsPerRow * Elem10kaConfigV1::_numberOfPixelsPerAsicRow; @}
+  uint32_t numberOfCalibrationRows() [[language("C++")]] @{ return Elem10kaConfigV1::_calibrationRowCountPerASIC * Elem10kaConfigV1::_numberOfAsicsPerColumn; @}
+  uint32_t numberOfEnvironmentalRows() [[language("C++")]] @{ return Elem10kaConfigV1::_environmentalRowCountPerASIC * Elem10kaConfigV1::_numberOfAsicsPerColumn; @}
+  uint32_t numberOfAsics() [[language("C++")]] @{ return Elem10kaConfigV1::_numberOfAsicsPerRow * Elem10kaConfigV1::_numberOfAsicsPerColumn * @self._numberOfElements; @}
+
+  PgpEvrConfig     _evr     -> evr;
+  Quad10kaConfigV2 _quad [4]-> quad;
+  Elem10kaConfigV1 _elem[16]-> elemCfg;
 
   /* Constructor which takes values for every attribute */
   @init()  [[auto]];
@@ -1713,7 +2005,7 @@
   [[config(Config100aV2)]]
   [[config(ConfigSV1)]]
   [[config(Config10kaV1)]]
-  [[config(Config10ka)]]
+  [[config(Config10kaV2)]]
 {
   uint32_t _first {
     uint8_t _vc:2 -> vc;
@@ -1744,6 +2036,8 @@
   [[pack(4)]]
   [[config(Config10ka2MV1)]]
   [[config(Config10kaQuadV1)]]
+  [[config(Config10ka2MV2)]]
+  [[config(Config10kaQuadV2)]]
 {
   uint32_t _frameNumber -> frameNumber;
   uint16_t _frame             [@config.numberOfElements()][@config.numberOfReadableRows()][@config.numberOfColumns()]         -> frame;

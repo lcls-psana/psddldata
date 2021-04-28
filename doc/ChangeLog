@@ -11,6 +11,10 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-00-78
+2021-04-28 Daniel Damiani
+- epix.ddl: added Config10kaV2, Config10ka2MV2, and Config10kaQuadV2.
+
 Tag V01-00-77
 2021-03-25 Daniel Damiani
 - bld.ddl: added ConfigV4 for ControlData which supports longer PVLabels.
