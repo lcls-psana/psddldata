@@ -13,8 +13,14 @@
     True  = 1,
   }
 
+  @enum RoiMode (uint8_t) {
+    Off      = 0,
+    On       = 1,
+    Centered = 2,
+  }
+
   @enum TriggerMode (uint8_t) {
-    FreeRun = 0,
+    FreeRun  = 0,
     External = 1,
     Software = 2,
   }
@@ -46,7 +52,7 @@
   /* Enable image correction feature. */
   VmbBool _correctionEnable -> correctionEnable;
   /* Enable image roi. */
-  VmbBool _roiEnable -> roiEnable;
+  RoiMode _roiEnable -> roiEnable;
   uint8_t _pad0[3];
   
   /* Sets the type of image correction to use. */
