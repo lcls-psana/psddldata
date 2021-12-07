@@ -233,23 +233,13 @@
     Y =1
   }
 
-  @enum Encoding (uint8_t) {
-    Spectral = 0,
-    Spatial  = 1
-  }
-
-  @enum Algorithm (uint8_t) {
-    FIR = 0,
-    Fit = 1,
-  }
-
   uint32_t _Control {
     /*  Time Axis of Image */
     Axis     _project_axis:1       -> project_axis;
-    /*  The type of timetool being used */
-    Encoding _encoding_type:1      -> encoding_type;
-    /*  The algorithm used for finding the edge */
-    Algorithm _edge_algorithm:1    -> edge_algorithm;
+    /*  Use Full Regions for Background Subtraction */
+    uint8_t  _use_full_roi:1       -> use_full_roi;
+    /*  Use Fit instead of FIR for edge finding */
+    uint8_t  _use_fit:1            -> use_fit;
     /*  Record Raw Image into Event */
     uint8_t  _write_image:1        -> write_image;
     /*  Record Time Axis Projections into Event */
@@ -262,6 +252,8 @@
     uint16_t _number_of_weights:16 -> number_of_weights;
     /*  Pixel to Time Calibration Polynomial Dimension */
     uint8_t  _calib_poly_dim:4     -> calib_poly_dim;
+    /*  Fit Parameters Dimension */
+    uint8_t  _fit_params_dim:4     -> fit_params_dim;
     /*  Length of EPICS PV base name */
     uint8_t  _base_name_length:8   -> base_name_length;
   }
@@ -274,6 +266,12 @@
 
   /*  Projection Minimum Value for Validation */
   uint32_t _signal_cut -> signal_cut;
+
+  /*  Maximum Fit Solver Iterations */
+  uint32_t _fit_max_iterations -> fit_max_iterations;
+
+  /*  Factor for Scaling Uncertainty for Fit Weights */
+  double   _fit_weights_factor -> fit_weights_factor;
 
   /*  Signal Region Coordinates Start */
   Camera.FrameCoord _sig_roi_lo -> sig_roi_lo;
@@ -308,12 +306,11 @@
   /*  Pixel to Time Calibration Polynomial */
   double   _calib_poly[@self.calib_poly_dim()] -> calib_poly;
 
+  /*  Initial Values for Fit Parameters */
+  double   _fit_params[@self.fit_params_dim()] -> fit_params;
+
   /*  EPICS PV base name */
   char _base_name[@self.base_name_length()] -> base_name;
-
-  /*  Check if full rois are used instead of projected */
-  uint8_t use_full_roi()
-  [[language("C++")]] @{ return (@self.encoding_type()==Spatial ? 1 : 0); @}
 
   /*  Size of projections */
   uint32_t signal_projection_size()
