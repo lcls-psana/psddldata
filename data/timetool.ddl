@@ -378,6 +378,7 @@
         number_of_laser_event_codes -> _number_of_laser_event_codes,
         number_of_weights -> _number_of_weights,
         calib_poly_dim    -> _calib_poly_dim,
+        fit_params_dim    -> _fit_params_dim,
         base_name_length  -> _base_name_length) [[inline]];
 }
 
