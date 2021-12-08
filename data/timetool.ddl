@@ -233,7 +233,7 @@
     Y =1
   }
 
-  uint32_t _Control {
+  uint64_t _Control {
     /*  Time Axis of Image */
     Axis     _project_axis:1       -> project_axis;
     /*  Use Full Regions for Background Subtraction */
