@@ -11,9 +11,13 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-00-82
+2021-12-07 Daniel Damiani
+- timetool.ddl: fix bug in ConfigV3 constructor
+
 Tag V01-00-81
 2021-12-07 Daniel Damiani
-- timetool.dll: add ConfigV3 and DataV3 for timetool
+- timetool.ddl: add ConfigV3 and DataV3 for timetool
 
 Tag V01-00-80
 2021-09-14 Daniel Damiani
