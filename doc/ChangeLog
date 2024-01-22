@@ -11,6 +11,11 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-00-85
+2024-01-22 Daniel Damiani
+- uxi.ddl: added ConfigV3 which adds oscillator settings.
+- jungfrau.ddl: added ConfigV4 which supports up to 32 (was 8) modules in a detector.
+
 Tag V01-00-84
 2023-10-07 Daniel Damiani
 - uxi.ddl: add ConfigV2
