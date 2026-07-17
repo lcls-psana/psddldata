@@ -11,6 +11,10 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag V01-00-86
+2026-07-16 Daniel Damiani
+- uxi.ddl: added ConfigV4 which adds additional timing modes plus registers.
+
 Tag V01-00-85
 2024-01-22 Daniel Damiani
 - uxi.ddl: added ConfigV3 which adds oscillator settings.
