@@ -293,30 +293,49 @@
     return @self.timeArray(Delay);
   @}
 
-  /* Function that parses the timingSequence properly based on the timing method */
-  uint32_t[] timing(uint32_t side)
+  /* Function that returns the valid length of the timingSequence based on the timing method */
+  uint32_t timingLength()
   [[language("C++")]] @{
-    unsigned size = 0;
+    uint32_t size = 0;
     switch (@self.timingMode()) {
     case  BasicTiming:
       size = 3;
       break;
     case ArbitraryTiming:
-      for (unsigned i=1; i<MaxTimingSequence; i++) {
-        size++;
-        if (@self.timingSequence()(side, i) == 0) {
-          break;
-        }
-      }
+      size = MaxTimingSequence;
       break;
     case ManualTiming:
       size = MaxManualShutterSequence;
       break;
     }
+    return size;
+  @}
+
+  /* Function that parses the timingSequence properly based on the timing method */
+  uint32_t[] timing(uint32_t side)
+  [[language("C++")]] @{
+    uint32_t size = @self.timingLength();
     if (size > 0) {
       return make_ndarray(@self.timingSequence().data() + side * MaxTimingSequence, size);
     } else {
       return ndarray<const uint32_t, 1>();
+    }
+  @}
+
+  /* Function that parses the timingSequence properly based on the timing method - 2D versio of timing function */
+  uint32_t[][] timingArray()
+  [[language("C++")]] @{
+    uint32_t size = @self.timingLength();
+    if (size > 0) {
+      ndarray<uint32_t, 2> array = make_ndarray<uint32_t>(NumberOfSides, size);
+      for (uint32_t side=0; side<NumberOfSides; side++) {
+        const uint32_t* src = @self.timingSequence().data() + (side * MaxTimingSequence);
+        uint32_t* dest = array.data() + (side * size);
+        std::copy(src, src + (size), dest);
+      }
+      return array;
+    } else {
+      return ndarray<const uint32_t, 2>();
     }
   @}
 
