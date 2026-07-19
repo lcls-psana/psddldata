@@ -260,7 +260,7 @@
   [[language("C++")]] @{ return @self.numPixels()*@self.numberOFBytesPerPixel(); @}
 
   /* Helper function for getting timing in v3 and earlier format. */
-  uint32_t[] timeArray(BasicTimingIdx idx)
+  uint32_t[] timeArray(uint32_t idx)
   [[language("C++")]] @{
     ndarray<uint32_t,1> timeArray = make_ndarray<uint32_t>(NumberOfSides);
     if (@self.timingMode() == BasicTiming) {
